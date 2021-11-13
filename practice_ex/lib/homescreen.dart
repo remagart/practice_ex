@@ -18,8 +18,9 @@ class _HomeScrrenState extends State<HomeScrren> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('EX 練習'),
-        backgroundColor: Colors.lightGreen,
+        title: Image.asset('assets/logo.png', height: 40),
+        backgroundColor: Colors.white,
+        shadowColor: Colors.transparent,
       ),
       body: _children[currentIdx],
       bottomNavigationBar: BottomNavigationBar(
