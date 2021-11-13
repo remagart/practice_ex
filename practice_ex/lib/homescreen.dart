@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import './account/accountscreen.dart';
+import './market/markeetscreen.dart';
+import './wallet/walletscreen.dart';
 
 class HomeScrren extends StatefulWidget {
   HomeScrren({Key? key}) : super(key: key);
@@ -9,11 +12,7 @@ class HomeScrren extends StatefulWidget {
 
 class _HomeScrrenState extends State<HomeScrren> {
   int currentIdx = 1;
-  final List _children = [
-    const Text('tes1t'),
-    const Text('test2'),
-    const Text('test3')
-  ];
+  final List _children = [MarketScreen(), WalletScreen(), AccountScreen()];
 
   @override
   Widget build(BuildContext context) {
