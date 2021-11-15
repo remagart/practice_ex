@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MarketScreen extends StatelessWidget {
   const MarketScreen({Key? key}) : super(key: key);
@@ -128,44 +129,58 @@ class RenderOneBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 153,
-        height: 60,
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 5.0,
-                    offset: Offset(0, 4),
-                    spreadRadius: 0.5,
-                  ),
-                ],
-              ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Container(
-                alignment: Alignment.center,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(myIcon),
-                    SizedBox(
-                      width: 8,
+    return GestureDetector(
+      onTap: () => onClicked(title),
+      child: Container(
+          width: 153,
+          height: 60,
+          alignment: Alignment.center,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 4),
+                      spreadRadius: 0.5,
                     ),
-                    Text(title)
                   ],
                 ),
               ),
-            ),
-          ],
-        ));
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(myIcon),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(title)
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
+  void onClicked(msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }
 
@@ -222,84 +237,98 @@ class RenderMarketItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      width: 327,
-      height: 87,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 5.0,
-                  offset: Offset(0, 4),
-                  spreadRadius: 0.5,
-                ),
-              ],
+    return GestureDetector(
+      onTap: () => onClicked(coinName),
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16),
+        width: 327,
+        height: 87,
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 5.0,
+                    offset: Offset(0, 4),
+                    spreadRadius: 0.5,
+                  ),
+                ],
+              ),
             ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Container(
-                width: 327,
-                height: 87,
-                alignment: Alignment.centerLeft,
-                color: Colors.white,
-                child: Container(
-                    width: 327,
-                    height: 87,
-                    color: Colors.white,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Image.network(
-                                    url,
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text(coinName),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Image.network(
-                                    "https://cdn-icons-png.flaticon.com/512/3553/3553968.png",
-                                    height: 30,
-                                  ),
-                                ],
-                              ),
-                            ],
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                  width: 327,
+                  height: 87,
+                  alignment: Alignment.centerLeft,
+                  color: Colors.white,
+                  child: Container(
+                      width: 327,
+                      height: 87,
+                      color: Colors.white,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.network(
+                                      url,
+                                      height: 30,
+                                    ),
+                                    SizedBox(width: 8),
+                                    Text(coinName),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Image.network(
+                                      "https://cdn-icons-png.flaticon.com/512/3553/3553968.png",
+                                      height: 30,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            left: 25,
+                            top: 16,
                           ),
-                          left: 25,
-                          top: 16,
-                        ),
-                        Positioned(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(value),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              convertRate(rate),
-                            ],
-                          ),
-                          right: 16,
-                          top: 16 + 8,
-                        )
-                      ],
-                    ))),
-          )
-        ],
+                          Positioned(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(value),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                convertRate(rate),
+                              ],
+                            ),
+                            right: 16,
+                            top: 16 + 8,
+                          )
+                        ],
+                      ))),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  void onClicked(msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   Widget convertRate(r) {
