@@ -5,7 +5,7 @@ class MarketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: const [
           RenderProperty(),
@@ -184,6 +184,22 @@ class RenderMarketList extends StatelessWidget {
               coinName: "ETH 以太幣",
               value: "98,859 TWD",
               rate: "-2.83%"),
+          RenderMarketItem(
+            url:
+                "https://blockclub.webnode.tw/_files/200000041-5435755309/450/USDT.png?ph=d1f183e4ae",
+            coinName: "USDT 泰達幣",
+            value: "27.9991 TWD",
+            rate: "+0.25%",
+          ),
+          RenderMarketItem(
+            url: "https://company.bitoex.com/static/img/bitopro.5bf4554.png",
+            coinName: "BITO 幣託幣",
+            value: "2.0399",
+            rate: "-1.70%",
+          ),
+          SizedBox(
+            height: 30,
+          )
         ],
       ),
     );
@@ -207,7 +223,7 @@ class RenderMarketItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 4),
+      margin: EdgeInsets.only(bottom: 16),
       width: 327,
       height: 87,
       child: Stack(
@@ -272,12 +288,7 @@ class RenderMarketItem extends StatelessWidget {
                               SizedBox(
                                 height: 8,
                               ),
-                              Text(
-                                rate,
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold),
-                              )
+                              convertRate(rate),
                             ],
                           ),
                           right: 16,
@@ -288,6 +299,21 @@ class RenderMarketItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget convertRate(r) {
+    String first = r[0];
+    Color color;
+    if ((first == "+")) {
+      color = const Color.fromARGB(0xFF, 0x00, 0xA0, 0x00);
+    } else {
+      color = const Color.fromARGB(0xFF, 0xFF, 0x00, 0x00);
+    }
+
+    return Text(
+      r,
+      style: TextStyle(color: color, fontWeight: FontWeight.bold),
     );
   }
 }

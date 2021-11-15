@@ -12,7 +12,11 @@ class HomeScrren extends StatefulWidget {
 
 class _HomeScrrenState extends State<HomeScrren> {
   int currentIdx = 1;
-  final List _children = [MarketScreen(), WalletScreen(), AccountScreen()];
+  final List _children = const [
+    MarketScreen(),
+    WalletScreen(),
+    AccountScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
