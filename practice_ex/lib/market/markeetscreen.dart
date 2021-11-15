@@ -176,18 +176,38 @@ class RenderMarketList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [RenderMarketItem()],
+        children: [
+          RenderMarketItem(),
+          RenderMarketItem(
+              url:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/480px-Ethereum-icon-purple.svg.png",
+              coinName: "ETH 以太幣",
+              value: "98,859 TWD",
+              rate: "-2.83%"),
+        ],
       ),
     );
   }
 }
 
 class RenderMarketItem extends StatelessWidget {
-  const RenderMarketItem({Key? key}) : super(key: key);
+  String url = "";
+  String coinName = "";
+  String value = "";
+  String rate = "";
+  RenderMarketItem(
+      {Key? key,
+      this.url =
+          "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Bitcoin-BTC-icon.png",
+      this.coinName = "BTC 比特幣",
+      this.value = "1,513,500 TWD",
+      this.rate = "+8.64%"})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 4),
       width: 327,
       height: 87,
       child: Stack(
@@ -224,11 +244,11 @@ class RenderMarketItem extends StatelessWidget {
                               Row(
                                 children: [
                                   Image.network(
-                                    "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Bitcoin-BTC-icon.png",
+                                    url,
                                     height: 30,
                                   ),
                                   SizedBox(width: 8),
-                                  Text("BTC 比特幣"),
+                                  Text(coinName),
                                 ],
                               ),
                               Row(
@@ -248,12 +268,12 @@ class RenderMarketItem extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text("1,513,500 TWD"),
+                              Text(value),
                               SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "+8.64%",
+                                rate,
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold),
