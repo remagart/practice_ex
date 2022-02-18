@@ -200,8 +200,7 @@ class RenderMarketList extends StatelessWidget {
               value: "98,859 TWD",
               rate: "-2.83%"),
           RenderMarketItem(
-            url:
-                "https://blockclub.webnode.tw/_files/200000041-5435755309/450/USDT.png?ph=d1f183e4ae",
+            url: "https://cf.shopee.tw/file/cf488a2ef66c70d4a6bce76f0a9dadfb",
             coinName: "USDT 泰達幣",
             value: "27.9991 TWD",
             rate: "+0.25%",
