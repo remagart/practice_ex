@@ -6,7 +6,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('222'),
+      child: const Text('v0.0.1'),
     );
   }
 }
